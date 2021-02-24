@@ -44,9 +44,8 @@ const request=https.request(process.env.APP_ID,options,function(response){
       res.sendFile(__dirname+"/failure.html");
   }
   response.on("data",function(data){
-    let jsonData=json.stringify(jsonData);
+    //console.log(JSON.parse(data))
   });
-
 });
 request.write(jsonData);
 request.end();
