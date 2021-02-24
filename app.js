@@ -39,7 +39,6 @@ const options={
 const request=https.request(process.env.APP_ID,options,function(response){
   response.on("data",function(data){
     let d=JSON.parse(data);
-    console.log(d)
   if((d.error_count)==0){
     res.sendFile(__dirname+"/success.html");
   }
