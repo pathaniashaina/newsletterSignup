@@ -57,6 +57,9 @@ app.post("/failure",function(req,res){
   res.redirect("/");
 });
 
-app.listen(process.env.PORT || 3000,function(){
-  console.log("server is running");
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+console.log("app is running successfully");
+app.listen(port);
