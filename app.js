@@ -37,14 +37,14 @@ const options={
 }
 
 const request=https.request(process.env.APP_ID,options,function(response){
-  response.on("data",function(data){
-    let d=JSON.parse(data);
-  if((d.error_count)==0){
+  if((response.statusCode)==200){
     res.sendFile(__dirname+"/success.html");
   }
   else{
       res.sendFile(__dirname+"/failure.html");
   }
+  response.on("data",function(data){
+    //  let d=JSON.parse(data);
   });
 
 });
@@ -56,9 +56,6 @@ app.post("/failure",function(req,res){
   res.redirect("/");
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-console.log("app is running successfully");
-app.listen(port);
+app.listen(process.env.PORT || 3000,function(){
+  console.log("server is running");
+});
